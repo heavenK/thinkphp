@@ -58,6 +58,7 @@ abstract class Action {
         list($user_name,$systemID) = explode("\t", authcode($user,'DECODE'));
         if ($user_name && $systemID) {
             $this->user = D('ViewUser')->where("`systemID`='$systemID' AND `title`='$user_name'")->find();
+			$this->assign("login_user",$this->user);
         } else {
             $this->user='';
         }
